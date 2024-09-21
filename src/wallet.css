@@ -1,0 +1,79 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    display: flex;
+    place-items: center;
+}
+
+.flex {
+    display: flex;
+    place-items: center;    
+}
+
+.container {
+    width: 100%;
+    padding: 1em 1.5em; 
+    flex-direction: column; 
+    
+    background-color: #333; /* Dark button background */
+    border: 1px solid #444; /* Slightly lighter border */
+    border-radius: 6px; /* Rounded corners */
+    color: #e0e0e0; /* Light text color */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+}
+
+.generates {
+    gap: 1em;
+}
+
+h1 {
+    font-size: 2.3em;
+    /* margin-bottom: .5em; */
+}
+
+.wallet-page {
+    flex-direction: column;
+}
+
+.wallet--section {
+    
+}
+
+.info--section,.details--section,.actions--section {
+    text-align: center;
+    margin: 1em;
+
+}
+
+.actions--section {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+
+    margin-top: 3em;
+}
+
+.wallet--container {
+    width: 80%;
+    flex-direction: column;
+    gap: 1.2em;
+}
+
+/* ETH&SOL STYLES */
+
+.wallets {
+    width: 100%;
+    gap: 1em;
+}
+
+.eth,.sol {
+    width: 50%;
+
+    padding: 1em 2em;
+}
