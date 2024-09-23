@@ -1,8 +1,16 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCopy } from '@fortawesome/free-solid-svg-icons';
 import './App.css'
 import './wallet.css'
 
-function ETHWallet() {
+function ETHWallet(props) {
+  
+  const handleCopy = () => {
+    const text = document.getElementById('accountAddress').innerText;
+    navigator.clipboard.writeText(text);
+    alert('Copied to clipboard!');
+  };
 
 
   return (
@@ -11,15 +19,25 @@ function ETHWallet() {
                 <div className="wallet-page flex">
                     <section className="wallet-section">
                        <div className="info--section">
-                            <h2>test wallet</h2>
-                            <p>0x0064390Fa428a0470bF3c4C5cCB518611d7ac1a7</p>
-                       </div>
+                          <p>Account 1</p>
+                          <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <p id="accountAddress" style={{ marginRight: '10px' }}>
+                              {props.publicKey}
+                            </p>
+                            <FontAwesomeIcon
+                              icon={faCopy}
+                              className="copy-icon"
+                              onClick={handleCopy}
+                            />
+                          </div>
+                        </div>
+
                        <div className="details--section">
                         <p>0 ETH</p>
                         <p>0 USD</p>
                        </div>
 
-                       <div className="actions--section">
+                       <div className="actions--section flex">
                             <button className='bttn-primary'>BUY/SELL</button>
                             <button className='bttn-primary'>SEND</button>
                        </div>

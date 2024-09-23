@@ -19,7 +19,7 @@ function SOLWallet(props) {
                         <p>0 USD</p>
                        </div>
 
-                       <div className="actions--section">
+                       <div className="actions--section flex">
                             <button className='bttn-primary'>BUY/SELL</button>
                             <button className='bttn-primary'>SEND</button>
                        </div>

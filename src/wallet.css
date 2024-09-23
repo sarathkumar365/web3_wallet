@@ -28,6 +28,10 @@ body {
     outline: none;
 }
 
+.wallet--container h1 {
+    text-align: left;
+}
+
 .generates {
     gap: 1em;
 }
@@ -37,43 +41,54 @@ h1 {
     /* margin-bottom: .5em; */
 }
 
+.wallets {
+    margin-top: 2em;
+}
+
 .wallet-page {
     flex-direction: column;
 }
 
 .wallet--section {
-    
+
 }
 
 .info--section,.details--section,.actions--section {
-    text-align: center;
-    margin: 1em;
+   
 
 }
 
 .actions--section {
-    display: flex;
     justify-content: center;
     gap: 1em;
-
-    margin-top: 3em;
 }
 
 .wallet--container {
-    width: 80%;
-    flex-direction: column;
-    gap: 1.2em;
+   
 }
 
 /* ETH&SOL STYLES */
 
 .wallets {
-    width: 100%;
-    gap: 1em;
+  gap: 1em;
 }
 
 .eth,.sol {
-    width: 50%;
-
-    padding: 1em 2em;
+    /* width: 48%; */
 }
+
+.copy-icon {
+    cursor: pointer;
+    /* color: #646cff; */
+    transition: color 0.3s ease; /* Smooth transition */
+  }
+  
+  .copy-icon:hover {
+    /* color: #1e90ff; */
+    color: #646cff;
+
+  }
+
+  #accountAddress {
+    font-size: 1.2rem;
+  }

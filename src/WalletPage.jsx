@@ -1,11 +1,7 @@
 import { React, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { HDKey } from 'ethereumjs-wallet';
-
-import {ethers}  from 'ethers'; 
+import {HDNodeWallet, Wallet}  from 'ethers'; 
 import { Keypair } from '@solana/web3.js';
-import nacl from 'tweetnacl';
-import * as bip32  from 'bip32';
 
 import './wallet.css';
 import ETHWallet from './ETHWallet';
@@ -18,7 +14,6 @@ const WalletPage = () => {
     const [ethWallet, setEthWallet] = useState(false);
     const [solWallet, setSolWallet] = useState(false);
 
-    // Generate ETH Wallet
     const genEthWallet = (seed) => {
         console.log("Generate Ethereum wallet");
 
@@ -27,20 +22,22 @@ const WalletPage = () => {
         // Derive eth keypairs
         const derivationPath = ethDerivationPath;
         
-        const hdWallet = HDKey.fromMasterSeed(seed);
+        const hdWallet = HDNodeWallet.fromSeed(seed);
+        // An hdWallet object, which contains the master key (seed) and can derive child keys along different paths.
 
         // Derive the private and public keys from the Ethereum derivation path
-        const wallet = hdWallet.derivePath(derivationPath).getWallet();
-        const privateKey = wallet.getPrivateKey().toString('hex');
-        const publicKey = wallet.getPublicKey().toString('hex');
-
-        // Generate Ethereum Wallet Address
-        const publicKeyBuffer = wallet.getPublicKey() // Get public key as a buffer
-        const addressBuffer = publicToAddress(publicKeyBuffer,true);
-        const ethAddress = `0x${addressBuffer.toString('hex')}`;
-
-        return ethAddress
-
+        const hdNodeWallet = hdWallet.derivePath(derivationPath);
+        // This derives the wallet at the specific Ethereum derivation path 
+        // (m/44'/60'/0'/0/0). It generates the private and public keys for the first Ethereum account based on that path.
+      
+        const privateKey = hdNodeWallet.privateKey; //Private key
+        const publicKey = hdNodeWallet.publicKey;
+        // console.log({privateKey, publicKey});
+        
+        const wallet = new Wallet(privateKey);
+        const address = wallet.address;
+        // console.log({address}); // address generated from RAW public key. This can be shared
+        setEthWallet({address,privateKey})
     };
 
     // Generate Solana wallet
@@ -51,9 +48,7 @@ const WalletPage = () => {
         const derivedSeed = seed.slice(0,32)
         const keyPair = Keypair.fromSeed(derivedSeed)
 
-        // console.log("Private Key:", keyPair.secretKey);
-        // console.log("Public Key:", keyPair.publicKey.toBase58());
-
+      
         return {
             publicKey: keyPair.publicKey.toBase58(),
             secretKey: keyPair.secretKey,
@@ -62,14 +57,12 @@ const WalletPage = () => {
             
     return (
         <>
-            <div className="wallet--container flex">
-                <div className="container flex">
-                    <h1>Generate your..</h1>
+            <div className="wallet--container">
+                <div className="container">
+                    <h1>Generate your...</h1>
                     <div className="generates flex">
                         <button className='bttn-primary' onClick={() => {                            
-                            const ethWallet = genEthWallet(seed);
-                            console.log(ethWallet);
-                            setEthWallet(true);
+                            genEthWallet(seed);
                         }}>ETH Wallet</button>
 
                         <button className='bttn-primary' onClick={() => {
@@ -80,7 +73,7 @@ const WalletPage = () => {
                 </div>
 
                 <section className="wallets flex">
-                    {ethWallet && <ETHWallet />}
+                    {ethWallet && <ETHWallet publicKey = {ethWallet} />}
                     {solWallet && <SOLWallet publicKey = {solWallet.publicKey} />}
                 </section>
             </div>
