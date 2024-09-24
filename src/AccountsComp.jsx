@@ -1,23 +1,28 @@
 import React, { useState } from 'react';
 import './accounts.css';
 import ethIcon from '../public/icons/ethereum.png';
+import { faL } from '@fortawesome/free-solid-svg-icons';
 
-function Accounts() {
+function Accounts(props) {
+
+  const [showFullAddress, setShowFullAddress] = useState(false);
+  
   // Tooltip visibility state
   const [showTooltip, setShowTooltip] = useState(false);
-  const [isFullAddressVisible, setIsFullAddressVisible] = useState(false);
 
-  // Full Ethereum address
-  const fullAddress = "0x16314A5A57Fb3661c7b0DF598f1459985B56866B";
-
-  // Function to truncate the Ethereum address
   const truncateAddress = (address) => {
-    return `${address.slice(0, 5)}.................${address.slice(-4)}`;
-  };
+    return `${address.slice(0,5)}.....${address.slice(-4)}`
+  }
 
   const handleAddressClick = () => {
-    setIsFullAddressVisible(!isFullAddressVisible);
-  };
+    setShowFullAddress((prev) => !prev);
+
+    setTimeout(() => {
+      setShowFullAddress(false)
+    }, 5000);
+};
+
+
 
   return (
     <>
@@ -36,11 +41,13 @@ function Accounts() {
                 onMouseLeave={() => setShowTooltip(false)} 
                 style={{ cursor: 'pointer' }}> 
               
-                <p className="address">0x.................866B</p>
+                <p onClick={handleAddressClick} className="address">
+                  {showFullAddress ? props.data.address : truncateAddress(props.data.address)}
+                  </p>
 
                 {showTooltip && (
                   <div className="tooltip" style={{ opacity: showTooltip ? 1 : 0 }}>
-                    Show your private key
+                    Show your public key
                   </div>
                 )}
 
