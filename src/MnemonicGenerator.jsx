@@ -34,9 +34,6 @@ const MnemonicGenerator = () => {
     
     const seed = mnemonic ? generateSeedFromMnemonic() : null;
     
-    console.log(mnemonic);
-    
-    
 
     return (
         <>

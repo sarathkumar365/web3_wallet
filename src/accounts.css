@@ -1,0 +1,99 @@
+.account {
+    /* border: 1px so lid red; */
+
+    margin-top: 3em;
+
+    padding: 1em;
+    width: 100%;
+}
+
+.acc--info {
+    padding: 1em;
+    gap: 5em;
+    justify-content: center;
+}
+
+.info {
+    /* margin-left: 2em; */
+    text-align: right;
+}
+
+.address-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .eth-icon {
+    width: 48px; /* Increased size for better visibility */
+    height: 48px;
+    border-radius: 50%; /* Circular icon */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.1); /* Shadow */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth hover effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 12px 30px rgba(0, 0, 0, 0.2); /* Darker, larger shadow */
+}
+
+.tooltip {
+    position: absolute;
+    bottom: 130%; /* Position tooltip above the address */
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 40px;
+    padding: 0.5em 1em;
+    background-color: #444; /* Dark background */
+    color: white; /* White text */
+    text-align: center;
+    border-radius: 5px;
+    animation: fadeIn 0.5s; /* Fade in/out animation */
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition */
+    pointer-events: none; /* Prevents hovering over the tooltip itself */
+    z-index: 1;
+    white-space: nowrap; /* Prevents text from wrapping */
+    max-width: 150px; /* Optional: set a max width */
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #444 transparent transparent transparent; /* Match tooltip background */
+}
+
+
+.address {
+    font-family: monospace;
+    background-color: #333; /* Highlight background */
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 1;
+}
+
+.address-container:hover .tooltip {
+    opacity: 1; /* Show tooltip on hover */
+}
+
+.address-container:hover .address {
+    background-color: #555; /* Highlight address on hover */
+    transition: background-color 0.3s; /* Smooth transition for highlight */
+}
+
+.acc--details span {
+    font-size: 1.8rem;
+}
+
+.actions{
+
+    margin-top: 1em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 2em;
+}

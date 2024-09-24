@@ -4,6 +4,7 @@ import {HDNodeWallet, Wallet}  from 'ethers';
 import { Keypair } from '@solana/web3.js';
 
 import './wallet.css';
+import Accounts from './AccountsComp';
 import ETHWallet from './ETHWallet';
 import SOLWallet from './SOLWallet';
 
@@ -38,6 +39,8 @@ const WalletPage = () => {
         const address = wallet.address;
         // console.log({address}); // address generated from RAW public key. This can be shared
         setEthWallet({address,privateKey})
+
+        return
     };
 
     // Generate Solana wallet
@@ -48,11 +51,12 @@ const WalletPage = () => {
         const derivedSeed = seed.slice(0,32)
         const keyPair = Keypair.fromSeed(derivedSeed)
 
-      
-        return {
-            publicKey: keyPair.publicKey.toBase58(),
-            secretKey: keyPair.secretKey,
-        };
+        setSolWallet({
+            address: keyPair.publicKey.toBase58(),
+            privateKey: keyPair.secretKey,
+        })
+       
+        return;
     };
             
     return (
@@ -66,16 +70,19 @@ const WalletPage = () => {
                         }}>ETH Wallet</button>
 
                         <button className='bttn-primary' onClick={() => {
-                            const solanaWallet = genSolanaWallet(seed)
-                            setSolWallet(solanaWallet)
+                            genSolanaWallet(seed)
                         }}>SOL Wallet</button>
                     </div>
                 </div>
 
-                <section className="wallets flex">
-                    {ethWallet && <ETHWallet publicKey = {ethWallet} />}
-                    {solWallet && <SOLWallet publicKey = {solWallet.publicKey} />}
-                </section>
+                {
+                    (solWallet || ethWallet) && 
+                        <section className="walletAccounts">
+                            <h3>These are your accounts associated with this wallet.</h3>
+                            <Accounts />
+                        </section>
+                }
+
             </div>
         </>
     );
