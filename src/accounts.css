@@ -18,6 +18,10 @@
     text-align: right;
 }
 
+.name{
+    /* margin-bottom: .5em; */
+}
+
 .address-container {
     position: relative;
     display: inline-block;
@@ -69,7 +73,8 @@
     background-color: #333; /* Highlight background */
     color: white;
     border-radius: 4px;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
     /* z-index: 1; */
 }
 

@@ -22,7 +22,14 @@ const WalletPage = () => {
                     <div className="generates flex">
                         <button className='bttn-primary' onClick={() => {                            
                             const ethWallet = genEthWallet(seed);
-                            setEthWallet(ethWallet)
+                            // setEthWallet(ethWallet)
+                            setEthWallet(
+                                {
+                                    ...ethWallet,
+                                    eth:true
+                                }
+                            )
+
                         }}>ETH Wallet</button>
 
                         <button className='bttn-primary' onClick={() => {
@@ -33,11 +40,14 @@ const WalletPage = () => {
                 </div>
 
                 {
+                    (solWallet || ethWallet) && <h3>These are your accounts associated with this wallet.</h3>
+                }
+                {
                     (solWallet || ethWallet) && 
-                        <section className="walletAccounts">
-                            <h3>These are your accounts associated with this wallet.</h3>
+                    <section className="walletAccounts">
                             {/* <Accounts /> */}
                             { ethWallet && <Accounts data = {ethWallet}/> }
+                            { solWallet && <Accounts data = {solWallet}/>}
                         </section>
                 }
 

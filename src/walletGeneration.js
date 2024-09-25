@@ -39,10 +39,10 @@ export const genEthWallet = (seed) => {
     const derivedSeed = seed.slice(0,32)
     const keyPair = Keypair.fromSeed(derivedSeed)
 
-    setSolWallet({
-        address: keyPair.publicKey.toBase58(),
-        privateKey: keyPair.secretKey,
-    })
+    
+    const address =  keyPair.publicKey.toBase58()
+        const privateKey = keyPair.secretKey
+    
    
     return {
         address,privateKey

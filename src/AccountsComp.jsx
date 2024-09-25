@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './accounts.css';
 import ethIcon from '../public/icons/ethereum.png';
-import { faL } from '@fortawesome/free-solid-svg-icons';
+import solIcon from '../public/icons/solana.png';
 
-function Accounts(props) {
+function Accounts(props) {  
 
   const [showFullAddress, setShowFullAddress] = useState(false);
   
@@ -29,7 +29,7 @@ function Accounts(props) {
       <section className='account container'>
         <div className="acc--info flex">
           <div className="icon">
-            <img src={ethIcon} alt="Ethereum Icon" className="eth-icon" style={{ width: 28, height: 28 }} />
+            <img src={props.data.eth ? ethIcon : solIcon} alt="Ethereum Icon" className="eth-icon" style={{ width: 28, height: 28 }} />
           </div>
 
           <div className="info">

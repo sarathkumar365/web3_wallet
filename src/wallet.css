@@ -49,14 +49,6 @@ h1 {
     flex-direction: column;
 }
 
-.wallet--section {
-
-}
-
-.info--section,.details--section,.actions--section {
-   
-
-}
 
 .actions--section {
     justify-content: center;
@@ -107,4 +99,10 @@ h1 {
 
 .info--section {
     position: relative; /* Make sure the tooltip is positioned relative to this section */
+}
+
+
+.walletAccounts {
+    display: flex;
+    gap: 1em;
 }
