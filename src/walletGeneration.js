@@ -41,7 +41,7 @@ export const genEthWallet = (seed) => {
 
     
     const address =  keyPair.publicKey.toBase58()
-        const privateKey = keyPair.secretKey
+    const privateKey = keyPair.secretKey
     
    
     return {

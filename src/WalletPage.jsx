@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { genEthWallet,genSolanaWallet } from './walletGeneration';
 
 import './wallet.css';
-import Accounts from './AccountsComp';
+import Accounts from './AccountsComp'; 
 
 const WalletPage = () => {
     const location = useLocation();
@@ -12,7 +12,51 @@ const WalletPage = () => {
     const [ethWallet, setEthWallet] = useState(false);
     const [solWallet, setSolWallet] = useState(false);
 
+    useEffect(() => {
+       
+        if(ethWallet) {
+            console.log('eth changed');
+            storeWallets(ethWallet)
+        }
+        
     
+
+    },[ethWallet])
+
+    useEffect(() => {
+       
+        if(solWallet) {
+            console.log('sol changed');
+            storeWallets(solWallet)
+
+        }
+        
+    
+
+    },[solWallet])
+
+    const storeWallets = (walletDetails) => {
+        // check if any wallets exists
+        const existingWallets =  JSON.parse(localStorage.getItem('wallets'))
+        // console.log(existingWallets);
+
+        // check if a sol / eth wallet already exists
+        // if yes, store the corresponding wallet as current wallet no + 1
+        
+
+        // if yes, merge them
+        if(existingWallets) {
+            const updatedWalletsList = [existingWallets,walletDetails]
+            localStorage.setItem('wallets', JSON.stringify(updatedWalletsList))
+            console.log('exists');
+            
+        } else {
+            localStorage.setItem('wallets', JSON.stringify(walletDetails))
+            console.log('not exists');
+        }
+
+    }
+        
 
     return (
         <>
@@ -22,7 +66,6 @@ const WalletPage = () => {
                     <div className="generates flex">
                         <button className='bttn-primary' onClick={() => {                            
                             const ethWallet = genEthWallet(seed);
-                            // setEthWallet(ethWallet)
                             setEthWallet(
                                 {
                                     ...ethWallet,
@@ -34,7 +77,11 @@ const WalletPage = () => {
 
                         <button className='bttn-primary' onClick={() => {
                             const solWallet = genSolanaWallet(seed)
-                            setSolWallet(solWallet)
+                            setSolWallet({
+                                ...solWallet,
+                                sol:true
+                            })
+
                         }}>SOL Wallet</button>
                     </div>
                 </div>
