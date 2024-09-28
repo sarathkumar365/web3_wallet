@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './accounts.css';
-import ethIcon from '../public/icons/ethereum.png';
-import solIcon from '../public/icons/solana.png';
+import ethIcon from './icons/ethereum.png';
+import solIcon from './icons/solana.png';
 
 function Accounts(props) {    
 

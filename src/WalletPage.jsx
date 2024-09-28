@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { genEthWallet,genSolanaWallet,retriveExistingWallets,storeWallets } from './walletGeneration';
+import { useLocation,useNavigate } from 'react-router-dom';
+import { retriveExistingWallets,storeWallets } from './walletGeneration';
 
 import './wallet.css';
 import GenerateBttnsComp from './generateBttnsComp';
@@ -8,12 +8,13 @@ import Accounts from './AccountsComp';
 
 const WalletPage = () => {
     const location = useLocation();
-    const { seed } = location.state || {};    
+    const { seed } = location.state || {};  
 
     const [ethWallet, setEthWallet] = useState(false);
     const [solWallet, setSolWallet] = useState(false);
 
     const [existingWallets,setExistingWallets] = useState(null)
+    const navigate = useNavigate()
 
     // run an effect to see if we have an existing wallet, 
     // if yes, store them in existingWallets
@@ -21,11 +22,11 @@ const WalletPage = () => {
 
         const existingWallets = retriveExistingWallets()
         
-        // return if no wallets exists
-        if(!existingWallets) return
-        
-        // store them in state and display them
-        setExistingWallets(existingWallets)
+        if(existingWallets) {
+            setExistingWallets(existingWallets)
+        } else {
+            if(!seed)    navigate('/')
+        }
     },[])
 
     // if there is change to any wallet state, listen and store them
@@ -39,7 +40,6 @@ const WalletPage = () => {
         if(solWallet)   storeWallets(solWallet)        
     },[solWallet])
 
-//    console.log(typeof existingWallets);
    
 
     return (

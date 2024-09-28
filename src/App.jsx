@@ -1,15 +1,25 @@
-import { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link , useNavigate} from 'react-router-dom';
+import { retriveExistingWallets } from './walletGeneration';
 import MnemonicGenerator from './MnemonicGenerator';
 import WalletPage from './WalletPage';  // Wallet page component
 import './App.css';
 
 
 function App() {
+
+  const navigate = useNavigate()
+
   const [createWallet, setCreateWallet] = useState(false);
-  
+
+  // check is wallets exists
+  useEffect(() => {
+    const walletExists = retriveExistingWallets()
+    if(walletExists) navigate('/wallet')
+  },[])
+
   return (
-    <Router>
+    // <Router>
       <div className="main">
         <Routes>
           {/* Home Page with Create Wallet */}
@@ -32,8 +42,9 @@ function App() {
           <Route path="/wallet" element={<WalletPage />} />
         </Routes>
       </div>
-    </Router>
+    // </Router>
   );
+  
 }
 
 export default App;
