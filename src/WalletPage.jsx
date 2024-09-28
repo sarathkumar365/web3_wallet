@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from 'react';
 import { useLocation,useNavigate } from 'react-router-dom';
-import { retriveExistingWallets,storeWallets } from './walletGeneration';
+import { retriveExistingWallets,storeWallets } from './addressManagement';
 
 import './wallet.css';
 import GenerateBttnsComp from './generateBttnsComp';
@@ -61,7 +61,7 @@ const WalletPage = () => {
                             {/* <Accounts /> */}
                             { ethWallet && <Accounts data = {ethWallet}/> }
                             { solWallet && <Accounts data = {solWallet}/>}
-                        </section>
+                    </section>
                 }
 
                 {/* display existing wallets if they exists */}

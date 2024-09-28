@@ -1,5 +1,5 @@
 import React from 'react'
-import { genEthWallet,genSolanaWallet } from './walletGeneration';
+import { genEthWallet,genSolanaWallet } from './addressManagement';
 
 function GenerateBttnsComp(props) {
     
