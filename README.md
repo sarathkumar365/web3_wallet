@@ -9,7 +9,7 @@ master
             |
             |-->    Fix the components width alteration when new components are added / which addressed arre hidden/not hidden.
             |
-            |-->    Implement BLOCK to NOT  be able to go to '/wallet' page if there is no wallets in local storage.
+            |-->    Implement BLOCK to NOT  be able to go to '/wallet' page if there is no wallets in local storage. ✅
                     |
                     |--> Check if there is already wallets existing in browser.
                     |--> I no, redirect to home '/'
