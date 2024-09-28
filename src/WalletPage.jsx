@@ -1,8 +1,9 @@
 import { React, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { genEthWallet,genSolanaWallet } from './walletGeneration';
+import { genEthWallet,genSolanaWallet,retriveExistingWallets,storeWallets } from './walletGeneration';
 
 import './wallet.css';
+import GenerateBttnsComp from './generateBttnsComp';
 import Accounts from './AccountsComp'; 
 
 const WalletPage = () => {
@@ -12,79 +13,44 @@ const WalletPage = () => {
     const [ethWallet, setEthWallet] = useState(false);
     const [solWallet, setSolWallet] = useState(false);
 
-    useEffect(() => {
-       
-        if(ethWallet) {
-            console.log('eth changed');
-            storeWallets(ethWallet)
-        }
+    const [existingWallets,setExistingWallets] = useState(null)
+
+    // run an effect to see if we have an existing wallet, 
+    // if yes, store them in existingWallets
+    useEffect(()=> {
+
+        const existingWallets = retriveExistingWallets()
         
-    
-
-    },[ethWallet])
-
-    useEffect(() => {
-       
-        if(solWallet) {
-            console.log('sol changed');
-            storeWallets(solWallet)
-
-        }
+        // return if no wallets exists
+        if(!existingWallets) return
         
-    
+        // store them in state and display them
+        setExistingWallets(existingWallets)
+    },[])
 
+    // if there is change to any wallet state, listen and store them
+    //  (This will happen only for first pair of wallets generated)
+   useEffect(()=>{        
+        if(ethWallet)   storeWallets(ethWallet)
+        
+   },[ethWallet])
+
+    useEffect(()=>{
+        if(solWallet)   storeWallets(solWallet)        
     },[solWallet])
 
-    const storeWallets = (walletDetails) => {
-        // check if any wallets exists
-        const existingWallets =  JSON.parse(localStorage.getItem('wallets'))
-        // console.log(existingWallets);
-
-        // check if a sol / eth wallet already exists
-        // if yes, store the corresponding wallet as current wallet no + 1
-        
-
-        // if yes, merge them
-        if(existingWallets) {
-            const updatedWalletsList = [existingWallets,walletDetails]
-            localStorage.setItem('wallets', JSON.stringify(updatedWalletsList))
-            console.log('exists');
-            
-        } else {
-            localStorage.setItem('wallets', JSON.stringify(walletDetails))
-            console.log('not exists');
-        }
-
-    }
-        
+//    console.log(typeof existingWallets);
+   
 
     return (
         <>
             <div className="wallet--container">
-                <div className="container">
-                    <h1>Generate your...</h1>
-                    <div className="generates flex">
-                        <button className='bttn-primary' onClick={() => {                            
-                            const ethWallet = genEthWallet(seed);
-                            setEthWallet(
-                                {
-                                    ...ethWallet,
-                                    eth:true
-                                }
-                            )
-
-                        }}>ETH Wallet</button>
-
-                        <button className='bttn-primary' onClick={() => {
-                            const solWallet = genSolanaWallet(seed)
-                            setSolWallet({
-                                ...solWallet,
-                                sol:true
-                            })
-
-                        }}>SOL Wallet</button>
-                    </div>
-                </div>
+                {   
+                    existingWallets ?   null : <GenerateBttnsComp data = {
+                        { ethWallet,setEthWallet,solWallet,setSolWallet, seed }
+                    }/>
+                    
+                }
 
                 {
                     (solWallet || ethWallet) && <h3>These are your accounts associated with this wallet.</h3>
@@ -97,6 +63,16 @@ const WalletPage = () => {
                             { solWallet && <Accounts data = {solWallet}/>}
                         </section>
                 }
+
+                {/* display existing wallets if they exists */}
+                <section className='walletAccounts'>
+                    {
+                        existingWallets?.map((element,index) => {
+                            return <Accounts    key={index} data = {element}/>
+                            
+                        })
+                    }
+                </section>
 
             </div>
         </>

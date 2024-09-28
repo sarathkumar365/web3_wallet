@@ -9,6 +9,9 @@ body {
     display: flex;
     place-items: center;
 }
+.hidden {
+    display: none;
+}
 
 .flex {
     display: flex;

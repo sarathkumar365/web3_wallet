@@ -3,14 +3,16 @@ import './accounts.css';
 import ethIcon from '../public/icons/ethereum.png';
 import solIcon from '../public/icons/solana.png';
 
-function Accounts(props) {  
+function Accounts(props) {    
 
+  const address = props.data.address ? props.data.address : ''
   const [showFullAddress, setShowFullAddress] = useState(false);
   
   // Tooltip visibility state
   const [showTooltip, setShowTooltip] = useState(false);
 
   const truncateAddress = (address) => {
+    
     return `${address.slice(0,5)}.....${address.slice(-4)}`
   }
 
@@ -42,7 +44,7 @@ function Accounts(props) {
                 style={{ cursor: 'pointer' }}> 
               
                 <p onClick={handleAddressClick} className="address">
-                  {showFullAddress ? props.data.address : truncateAddress(props.data.address)}
+                  {showFullAddress ? props.data.address : truncateAddress(address)}
                   </p>
 
                 {showTooltip && (

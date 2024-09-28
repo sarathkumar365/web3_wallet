@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import { generateMnemonic, mnemonicToSeedSync } from 'bip39';
-import { Buffer } from 'buffer';
 import './App.css'
 // import * as bip39 from "bip39";
 

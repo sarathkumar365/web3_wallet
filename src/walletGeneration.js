@@ -49,3 +49,34 @@ export const genEthWallet = (seed) => {
     }
 };
 
+
+// Store wallets
+
+export const storeWallets = (walletDetails) => {
+    // check if any wallets exists
+    const existingWallets =  JSON.parse(localStorage.getItem('wallets'))
+
+    // check if a sol / eth wallet already exists
+    // if yes, store the corresponding wallet as current wallet no + 1
+    
+
+    // if yes, merge them
+    if(existingWallets) {
+        const updatedWalletsList = [existingWallets,walletDetails]
+        localStorage.setItem('wallets', JSON.stringify(updatedWalletsList))
+        // console.log('exists');
+        
+    } else {
+        localStorage.setItem('wallets', JSON.stringify(walletDetails))
+        // console.log('not exists');
+    }
+
+}
+
+// retrive existing wallets
+
+export const retriveExistingWallets = () => {
+     // check if any wallets exists
+     return JSON.parse(localStorage.getItem('wallets'))
+
+}
