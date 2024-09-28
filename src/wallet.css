@@ -104,8 +104,17 @@ h1 {
     position: relative; /* Make sure the tooltip is positioned relative to this section */
 }
 
+.wallet--container{
+    width: 80%;
+
+    display: flex;
+    place-content: center;
+}
 
 .walletAccounts {
+    width: 60%;
+    /* border: 1px solid red; */
     display: flex;
+    flex-direction: column;
     gap: 1em;
 }

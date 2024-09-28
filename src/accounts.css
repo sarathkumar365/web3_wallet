@@ -10,7 +10,7 @@
 .acc--info {
     padding: 1em;
     gap: 10em;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .info {

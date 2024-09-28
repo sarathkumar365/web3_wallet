@@ -1,5 +1,5 @@
 import React from 'react'
-import { genEthWallet,genSolanaWallet } from './walletGeneration';
+import { genEthWallet,genSolanaWallet } from './addressManagement';
 
 function GenerateBttnsComp(props) {
     
@@ -7,7 +7,7 @@ function GenerateBttnsComp(props) {
 
   return (
     <>
-        <div className="container">
+        <div className={`container ${(ethWallet && solWallet) ? 'hidden' : ''}`}>
             <h1>Generate your...</h1>
             <div className="generates flex">
                 <button className={`bttn-primary ${ethWallet ? 'hidden' : ''}`} onClick={() => {                            

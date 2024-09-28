@@ -53,6 +53,8 @@ export const genEthWallet = (seed) => {
 // Store wallets
 
 export const storeWallets = (walletDetails) => {
+    console.log('Storing...');
+    
     // check if any wallets exists
     const existingWallets =  JSON.parse(localStorage.getItem('wallets'))
 

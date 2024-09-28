@@ -81,16 +81,46 @@
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
 }
-
+/* 
 .success-banner {
   margin-top: 20px;
   padding: .5em 2em;
-  background-color: #444; /* Green background */
-  color: white; /* White text */
+  background-color: #444; 
+  color: white; 
   text-align: center;
   border-radius: 5px;
   position: relative;
-  animation: fadeIn 0.5s, fadeOut 0.5s 2.5s; /* Optional: fade in/out animation */
+  animation: fadeIn 0.5s, fadeOut 0.5s 2.5s; 
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+} */
+
+.banner-container {
+  height: 50px; /* Fixed height to prevent content shifting */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden; /* Initially hidden */
+
+  padding: .5em 1.2em;
+
+  margin-top: 2em;
+}
+
+.banner-container.visible {
+  visibility: visible; /* Show the banner */
+  background-color: #444; /* Dark background */
+  color: white; /* Text color */
+  border-radius: 5px;
+  animation: fadeIn 0.5s, fadeOut 0.5s 2.5s; /* Fade in/out animation */
 }
 
 @keyframes fadeIn {

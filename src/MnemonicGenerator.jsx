@@ -75,7 +75,11 @@ const MnemonicGenerator = () => {
                 </div>
             )}
 
-            {showBanner && <div className="success-banner">Successfully copied!</div>}
+            <div className={`banner-container ${showBanner ? 'visible' : ''}`}>
+                {showBanner && <p>Successfully copied!</p>}
+            </div>
+
+            {/* {showBanner && <div className="success-banner">Successfully copied!</div>} */}
         </>
     );
 };
