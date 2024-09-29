@@ -52,12 +52,23 @@ const WalletPage = () => {
                     
                 }
 
+                <div className="heading">
                 {
-                    (solWallet || ethWallet) && <h3>These are your accounts associated with this wallet.</h3>
+                    ((solWallet || ethWallet) || existingWallets) && 
+                    <h3>These are your accounts associated with this wallet.</h3>
                 }
+                </div>
+
+                <div className="add-wallet--bttns">
+                    <button className='bttn--primary'>ADD ETH WALLET</button>
+                    <button className='bttn--primary'>ADD SOL WALLET</button>
+                </div>
+
                 {
+                    
                     (solWallet || ethWallet) && 
                     <section className="walletAccounts">
+                        
                             {/* <Accounts /> */}
                             { ethWallet && <Accounts data = {ethWallet}/> }
                             { solWallet && <Accounts data = {solWallet}/>}

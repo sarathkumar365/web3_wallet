@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link , useNavigate} from 'react-router-dom';
 import { retriveExistingWallets } from './addressManagement';
 import MnemonicGenerator from './MnemonicGenerator';
-import WalletPage from './WalletPage';  // Wallet page component
+// import WalletPage from './WalletPage';  
+import WalletPage from './newWalletPage';
 import './App.css';
 
 
