@@ -1,10 +1,13 @@
 import {HDNodeWallet, Wallet}  from 'ethers'; 
 import { Keypair } from '@solana/web3.js';
+import { derivePath } from "ed25519-hd-key";
+import { Buffer } from 'buffer';
+import nacl from 'tweetnacl';
 
-export const genEthWallet = (seed) => {
-    console.log("Generate Ethereum wallet");
+export const genEthWallet = (seed,walletId) => {
+    console.log(walletId);
 
-    const ethDerivationPath = "m/44'/60'/0'/0/0"; //Derivation path for eth
+    const ethDerivationPath = `m/44'/60'/0'/0/${walletId}`; //Derivation path for eth
 
     // Derive eth keypairs
     const derivationPath = ethDerivationPath;
@@ -27,22 +30,25 @@ export const genEthWallet = (seed) => {
     // setEthWallet({address,privateKey})
 
     return {
-        address,privateKey
+        address,privateKey,walletId
     }
 };
 
  // Generate Solana wallet
- export const genSolanaWallet = (seed) => {
-    console.log("Generate solana wallet");
+ export const genSolanaWallet = (seed,walletId) => {
 
-    // Derive a solana keypair from the seed
-    const derivedSeed = seed.slice(0,32)
-    const keyPair = Keypair.fromSeed(derivedSeed)
+    console.log(walletId);
+    
 
-    
-    const address =  keyPair.publicKey.toBase58()
-    const privateKey = keyPair.secretKey
-    
+    const derivationPath = `m/44'/501'/${walletId}'/0'`;
+
+    const derivedSeed = derivePath(derivationPath, seed.toString("hex")).key;
+    const secret = nacl.sign.keyPair.fromSeed(derivedSeed).secretKey;
+    const keypair = Keypair.fromSecretKey(secret);
+
+    const address =  keypair.publicKey.toBase58()
+    const privateKey = keypair.secretKey
+        
    
     return {
         address,privateKey
@@ -53,32 +59,57 @@ export const genEthWallet = (seed) => {
 // Store wallets
 
 export const storeWallets = (walletDetails) => {
-    console.log('Storing...');
     
-    // check if any wallets exists
-    const existingWallets =  JSON.parse(localStorage.getItem('wallets'))
-
-    // check if a sol / eth wallet already exists
-    // if yes, store the corresponding wallet as current wallet no + 1
     
 
-    // if yes, merge them
-    if(existingWallets) {
-        const updatedWalletsList = [existingWallets,walletDetails]
-        localStorage.setItem('wallets', JSON.stringify(updatedWalletsList))
-        // console.log('exists');
+    if(walletDetails.address.startsWith('0x'))  {
+
+        // check if any wallets exists
+        const existingWallets =  JSON.parse(localStorage.getItem('ethWallets'))
+
+
+        // check if a sol / eth wallet already exists
+        // if yes, store the corresponding wallet as current wallet no + 1
         
+    
+        // if yes, merge them
+        if(existingWallets) {
+            const updatedWalletsList = [...existingWallets,walletDetails]
+            localStorage.setItem('ethWallets', JSON.stringify(updatedWalletsList))
+            // console.log('exists');
+            
+        } else {
+            localStorage.setItem('ethWallets', JSON.stringify([walletDetails]))
+            // console.log('not exists');
+        }
+
     } else {
-        localStorage.setItem('wallets', JSON.stringify(walletDetails))
-        // console.log('not exists');
+
+        // check if any wallets exists
+        const existingWallets =  JSON.parse(localStorage.getItem('solWallets'))
+
+        if(existingWallets) {
+            const updatedWalletsList = [...existingWallets,walletDetails]
+            localStorage.setItem('solWallets', JSON.stringify(updatedWalletsList))
+            // console.log('exists');
+            
+        } else {
+            localStorage.setItem('solWallets', JSON.stringify([walletDetails]))
+            // console.log('not exists');
+        }
+        
     }
+    
+    
 
 }
 
 // retrive existing wallets
 
-export const retriveExistingWallets = () => {
+export const retriveExistingWallets = (wallet) => {    
+    console.log(JSON.parse(localStorage.getItem('ethWallet')));
+    
      // check if any wallets exists
-     return JSON.parse(localStorage.getItem('wallets'))
+     return JSON.parse(localStorage.getItem(wallet)) || []
 
 }

@@ -111,3 +111,19 @@
     padding: 1em 1.3em;
     gap: 2em;
 }
+
+.create--wallet {
+    width: 100%;
+    padding: 5em 1em;
+}
+
+.actions {
+    width: 50%;
+    padding: 1em 2em;
+    flex-direction: column;
+}
+
+.action--bttns{
+    margin-top: 2em;
+    gap: 2em;
+}
