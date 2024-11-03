@@ -2,7 +2,11 @@ import React from 'react'
 import deleteIcon from './icons/delete.png'
 
 
-function WalletSectionComp() {
+function WalletSectionComp(walletDetails) {
+
+    console.log(walletDetails);
+    
+
   return (
     <>
         <section className='wallets--section flex'>

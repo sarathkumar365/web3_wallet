@@ -106,9 +106,29 @@ export const storeWallets = (walletDetails) => {
 
 // retrive existing wallets
 
-export const retriveExistingWallets = (wallet) => {    
-    console.log(JSON.parse(localStorage.getItem('ethWallet')));
-    
+export const retriveExistingWallets = (wallet = 'all') => {    
+
+    if(wallet = 'all') {
+        
+        const wallets = {}
+        const ethWallets = JSON.parse(localStorage.getItem('ethWallets')) 
+        const solWallets = JSON.parse(localStorage.getItem('solWallets')) 
+            
+        // only return if they exist's || return empty arr []
+        // so state will be initialized as empty []
+        if(ethWallets || solWallets) {
+            
+            wallets.eth = ethWallets
+            wallets.sol = solWallets
+
+            return wallets
+        }
+
+
+        return []
+
+        
+    }
      // check if any wallets exists
      return JSON.parse(localStorage.getItem(wallet)) || []
 

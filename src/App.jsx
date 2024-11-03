@@ -14,10 +14,10 @@ function App() {
   const [createWallet, setCreateWallet] = useState(false);
 
   // check is wallets exists
-  // useEffect(() => {
-  //   const walletExists = retriveExistingWallets()
-  //   if(walletExists) navigate('/wallet')
-  // },[])
+  useEffect(() => {
+    const walletExists = retriveExistingWallets()
+    if(walletExists.length > 0) navigate('/wallet')
+  },[])
 
   return (
     // <Router>
