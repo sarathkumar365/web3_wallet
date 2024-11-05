@@ -18,11 +18,9 @@ function newWalletPage() {
     const { seed } = location.state || {};  
 
     useEffect(()=> {
-        console.log('running');
-
+        // Run this initially to set the state for already existing wallets.
         const existingWallets = retriveExistingWallets()
-        // console.log(typeof existingWallets);
-        
+
         if(existingWallets.eth || existingWallets.sol) {
             setETHWallet(existingWallets.eth)
             setSOLWallet(existingWallets.sol)
@@ -35,7 +33,7 @@ function newWalletPage() {
 
         setCreateBttnClicked(false)
         
-        let walletId = retriveExistingWallets('ethWallets').length + 1 || 1
+        let walletId = retriveExistingWallets('ethWallets').length + 1 || 1        
 
         const ethWallet = genEthWallet(seed,walletId)
         setETHWallet(prevValue => [
@@ -63,8 +61,17 @@ function newWalletPage() {
         
     }
 
+    // create arr to display wallets
+    const ethArr = ethWallet?.map((wallet,id) => {                                
+        return <WalletSectionComp data = {wallet}   key = {id} />
+    })
 
-    console.log(ethWallet,solWallet);
+    const solArr =  solWallet?.map((wallet,id) => {                                
+        return <WalletSectionComp data = {wallet}   key = {id} />
+    })
+    
+    // console.log(ethWallet,solWallet);
+    
     
 
   return (
@@ -93,7 +100,7 @@ function newWalletPage() {
         </nav>
 
         {
-            ( ethWallet.length > 0 || solWallet.length > 0 ) || 
+            ( ethWallet?.length > 0 || solWallet?.length > 0 ) || 
             <section className="create--wallet flex">
             <div className="actions flex">
                 <h2>Create your <span className='eth'>ETH</span>, <span className='sol'>SOL</span> Wallets</h2>
@@ -105,13 +112,17 @@ function newWalletPage() {
         </section>
         }
 
-        {            
-            // ethWallet && 
-            // ethWallet.map(wallet => {
-            //     <WalletSectionComp data = {wallet} />
-            // })
+        {          
 
             // Display eth wallets
+            ethArr?.length > 0 && ethArr
+
+        }
+
+        {          
+
+        // Display sol wallets
+        solArr?.length > 0 && solArr
 
         }
     </>

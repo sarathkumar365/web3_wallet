@@ -5,7 +5,6 @@ import { Buffer } from 'buffer';
 import nacl from 'tweetnacl';
 
 export const genEthWallet = (seed,walletId) => {
-    console.log(walletId);
 
     const ethDerivationPath = `m/44'/60'/0'/0/${walletId}`; //Derivation path for eth
 
@@ -36,9 +35,8 @@ export const genEthWallet = (seed,walletId) => {
 
  // Generate Solana wallet
  export const genSolanaWallet = (seed,walletId) => {
-
     console.log(walletId);
-    
+
 
     const derivationPath = `m/44'/501'/${walletId}'/0'`;
 
@@ -51,7 +49,7 @@ export const genEthWallet = (seed,walletId) => {
         
    
     return {
-        address,privateKey
+        address,privateKey,walletId
     }
 };
 
@@ -107,13 +105,13 @@ export const storeWallets = (walletDetails) => {
 // retrive existing wallets
 
 export const retriveExistingWallets = (wallet = 'all') => {    
-
-    if(wallet = 'all') {
+    
+    if(wallet === 'all') {
         
         const wallets = {}
-        const ethWallets = JSON.parse(localStorage.getItem('ethWallets')) 
-        const solWallets = JSON.parse(localStorage.getItem('solWallets')) 
-            
+        const ethWallets = JSON.parse(localStorage.getItem('ethWallets')) || []
+        const solWallets = JSON.parse(localStorage.getItem('solWallets')) || []
+        
         // only return if they exist's || return empty arr []
         // so state will be initialized as empty []
         if(ethWallets || solWallets) {
@@ -123,12 +121,14 @@ export const retriveExistingWallets = (wallet = 'all') => {
 
             return wallets
         }
-
-
+        
+        
         return []
-
+        
         
     }
+    
+    
      // check if any wallets exists
      return JSON.parse(localStorage.getItem(wallet)) || []
 

@@ -3,8 +3,6 @@ import deleteIcon from './icons/delete.png'
 
 
 function WalletSectionComp(walletDetails) {
-
-    console.log(walletDetails);
     
 
   return (
@@ -12,7 +10,7 @@ function WalletSectionComp(walletDetails) {
         <section className='wallets--section flex'>
             <div className="wallet">
                 <div className="row--1 flex">
-                    <div className="wallet--id">Wallet 1</div>
+                    <div className="wallet--id">{walletDetails.data.walletId}</div>
                     <div className="delete">
                         {/* <img src={deleteIcon} alt="delete icon" /> */}
                         <button className='bttn--primary flex delete--bttn'>Delete Wallet  
@@ -22,7 +20,7 @@ function WalletSectionComp(walletDetails) {
                 </div>
 
                 <div className="row--2">
-                    <p className="key">0x3bFf3Dcd5D0aBC3E06A9eBf93FcED3a2aD62D491</p>
+                    <p className="key">{walletDetails.data.address}</p>
                 </div>
 
                 <div className="row--3 flex">
