@@ -3,6 +3,23 @@ import { Keypair } from '@solana/web3.js';
 import { derivePath } from "ed25519-hd-key";
 import { Buffer } from 'buffer';
 import nacl from 'tweetnacl';
+import { generateMnemonic, mnemonicToSeedSync } from 'bip39';
+
+
+export const generateSeedFromMnemonic = () => {
+
+    // retrive existing mnemonics
+    const existingMnemonics =  localStorage.getItem('mnemonic')
+    
+    try {
+        return mnemonicToSeedSync(existingMnemonics);
+    } catch (error) {
+        console.error("Error generating seed from mnemonic:", error);
+        return null;
+    }
+};
+
+
 
 export const genEthWallet = (seed,walletId) => {
 
@@ -10,6 +27,9 @@ export const genEthWallet = (seed,walletId) => {
 
     // Derive eth keypairs
     const derivationPath = ethDerivationPath;
+
+     // check if seed exists, if not gen one
+     if(!seed) seed = generateSeedFromMnemonic()
     
     const hdWallet = HDNodeWallet.fromSeed(seed);
     // An hdWallet object, which contains the master key (seed) and can derive child keys along different paths.
@@ -35,7 +55,9 @@ export const genEthWallet = (seed,walletId) => {
 
  // Generate Solana wallet
  export const genSolanaWallet = (seed,walletId) => {
-    console.log(walletId);
+    
+    // check if seed exists, if not gen one
+    if(!seed) seed = generateSeedFromMnemonic()
 
 
     const derivationPath = `m/44'/501'/${walletId}'/0'`;

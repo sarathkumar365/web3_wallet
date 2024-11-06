@@ -16,7 +16,10 @@ function App() {
   // check is wallets exists
   useEffect(() => {
     const walletExists = retriveExistingWallets()
-    if(walletExists.length > 0) navigate('/wallet')
+
+    if(walletExists.eth.length === 0 || walletExists.sol.length === 0) navigate('/')
+    
+    if(walletExists.eth.length > 0 || walletExists.sol.length > 0) navigate('/wallet')
   },[])
 
   return (

@@ -17,6 +17,8 @@ function newWalletPage() {
     const location = useLocation(); 
     const { seed } = location.state || {};  
 
+    
+
     useEffect(()=> {
         // Run this initially to set the state for already existing wallets.
         const existingWallets = retriveExistingWallets()
