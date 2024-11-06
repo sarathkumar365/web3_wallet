@@ -3,7 +3,7 @@ import { Keypair } from '@solana/web3.js';
 import { derivePath } from "ed25519-hd-key";
 import { Buffer } from 'buffer';
 import nacl from 'tweetnacl';
-import { generateMnemonic, mnemonicToSeedSync } from 'bip39';
+import { mnemonicToSeedSync } from 'bip39';
 
 
 export const generateSeedFromMnemonic = () => {
