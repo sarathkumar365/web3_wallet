@@ -3,11 +3,14 @@ import './account.css'
 
 function AccountComp() {
 
+    const sol = true
+    const walletId = 'dsfdhgfbskfmsd89yhdj3b'
+
   return (
     <section className='main'>
         <div className="heading">
             <h1>Wallet ID</h1>
-            <p className="id">dsfdhgfbskfmsd89yhdj3b</p>
+            <p className="id">{walletId}</p>
         </div>
 
         <div className="action--bttns">
@@ -16,8 +19,13 @@ function AccountComp() {
         </div>
 
         <div className="account--details">
+            <h3>Account Details</h3>
             <div className="balance">
-                <p className="bal">1<span>sol</span></p>
+                <p className="bal">
+                    1<span>{
+                        sol ? ' sol': ' eth'
+                        }</span>
+                    </p>
             </div>
         </div>
     </section>

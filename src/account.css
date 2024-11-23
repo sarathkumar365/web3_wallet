@@ -1,0 +1,30 @@
+.main {
+    width: 100%;
+    padding: 1em 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1em;
+}
+
+.action--bttns {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: flex-start;
+    gap: 1em;
+}
+
+.account--details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    font-size: 1.5rem;
+}
+
+.heading {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+  

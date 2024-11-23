@@ -9,6 +9,8 @@ import './App.css';
 
 function App() {
 
+  const currentPath = window.location.pathname;
+
   const navigate = useNavigate()
 
   const [createWallet, setCreateWallet] = useState(false);
@@ -17,9 +19,19 @@ function App() {
   useEffect(() => {
     const walletExists = retriveExistingWallets()
 
-    if(walletExists.eth.length === 0 || walletExists.sol.length === 0) navigate('/')
+    // if(walletExists.eth.length === 0 || walletExists.sol.length === 0) navigate('/')
     
-    if(walletExists.eth.length > 0 || walletExists.sol.length > 0) navigate('/wallet')
+    // if(walletExists.eth.length > 0 || walletExists.sol.length > 0) navigate('/wallet')
+
+    // Dont redirect if on account page
+    if(currentPath !== '/account') {
+      if(walletExists.eth.length === 0 || walletExists.sol.length === 0) {
+        navigate('/')
+      } else {
+        navigate('/wallet')
+      }
+    }
+
   },[])
 
   return (
