@@ -155,3 +155,7 @@ export const retriveExistingWallets = (wallet = 'all') => {
      return JSON.parse(localStorage.getItem(wallet)) || []
 
 }
+
+const deleteWallet = (walletId) => {
+    
+}

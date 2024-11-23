@@ -1,26 +1,6 @@
-The steps to generate wallets for Ethereum and Solana differ due to their underlying architectures and key management approaches. Here’s a comparison of the key differences:
+TODO
 
-### 1. **Key Derivation Method**
-- **Ethereum**: Uses a hierarchical deterministic (HD) wallet structure defined by BIP32/BIP44. This allows you to derive multiple addresses from a single seed using specific derivation paths.
-  - Example: Ethereum uses a specific derivation path like `m/44'/60'/0'/0/0` to create a unique account.
+Implement the logic for ->
 
-- **Solana**: Utilizes a simpler method where a fixed-length seed (32 bytes) directly generates a keypair. Solana does not require a specific derivation path like Ethereum.
-  - Example: The seed is sliced to 32 bytes and passed directly to create a `Keypair`.
-
-### 2. **Public/Private Key Structure**
-- **Ethereum**: The public key is generated from the private key and then further processed (often hashed) to derive the Ethereum address, which is the format used for transactions.
-  - You derive a `publicKey` and then create a wallet object to get the `address`.
-
-- **Solana**: The `publicKey` is derived directly from the seed using the `Keypair` class without additional transformations. The public key itself is used as the wallet address in Base58 format.
-
-### 3. **Complexity of Wallets**
-- **Ethereum**: More complex due to the HD structure, enabling multiple accounts and better organization of funds.
-- **Solana**: Simpler wallet structure focused on generating a single keypair from a seed.
-
-### 4. **Use of Libraries**
-- Both ecosystems have their own libraries:
-  - **Ethereum**: Libraries like `ethers.js` or `web3.js` are commonly used to handle wallet creation and interactions.
-  - **Solana**: The Solana Web3.js library provides the necessary functions to create wallets and manage keypairs.
-
-### Summary
-The differences stem from the design philosophies of Ethereum and Solana. Ethereum emphasizes hierarchical management and multiple accounts, while Solana focuses on straightforward keypair generation. Each approach aligns with the respective network's architecture and user needs.
+1. Delete Wallet
+2. Add animations for transitions

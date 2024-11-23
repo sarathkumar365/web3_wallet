@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link , useNavigate} from 'react-router-dom';
 import { retriveExistingWallets } from './addressManagement';
 import MnemonicGenerator from './MnemonicGenerator';
-// import WalletPage from './WalletPage';  
+import AccountPage from './AccountComp';  
 import WalletPage from './newWalletPage';
 import './App.css';
 
@@ -44,6 +44,8 @@ function App() {
 
           {/* Wallet Page Route */}
           <Route path="/wallet" element={<WalletPage />} />
+          <Route path="/account" element={<AccountPage />} />
+
         </Routes>
       </div>
     // </Router>

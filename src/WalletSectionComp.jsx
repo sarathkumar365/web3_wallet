@@ -1,8 +1,17 @@
 import React from 'react'
+import { Link,useNavigate } from 'react-router-dom';
+
 import deleteIcon from './icons/delete.png'
 
 
 function WalletSectionComp(walletDetails) {
+
+    const navigate = useNavigate()
+
+
+    const goToAccount = () => {
+        navigate('/account'); // Navigates to /account
+      };
     
 
   return (
@@ -16,6 +25,12 @@ function WalletSectionComp(walletDetails) {
                         <button className='bttn--primary flex delete--bttn'>Delete Wallet  
                             <img src={deleteIcon} alt="delete bttn" />
                         </button>
+                    </div>
+                    <div className="viewAccount">
+                        {/* <Link to={'account'}> */}
+                            <button onClick={goToAccount} className='bttn--primary flex delete--bttn'>View Account  
+                            </button>
+                        {/* </Link> */}
                     </div>
                 </div>
 

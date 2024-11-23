@@ -22,6 +22,7 @@ const MnemonicGenerator = () => {
             console.error("Error generating mnemonics:", error);
         }
     };
+    
 
     // const generateSeedFromMnemonic = () => {
     //     try {
