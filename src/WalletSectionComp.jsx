@@ -9,8 +9,9 @@ function WalletSectionComp(walletDetails) {
     const navigate = useNavigate()
 
 
-    const goToAccount = () => {
-        navigate('/account'); // Navigates to /account
+    const goToAccount = () => {                
+        const data = { walletAddress : walletDetails.data.address };
+        navigate('/account', {state : data}); // Navigates to /account
       };
     
 

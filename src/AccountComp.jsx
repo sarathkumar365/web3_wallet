@@ -1,15 +1,24 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom';
 import './account.css'
-import { useSearchParams } from 'react-router-dom'
+
+import {getBalance} from './chains/solana'
 
 function AccountComp() {
 
-    const [mode,setMode] = useState('Testnet')
+    const [mode,setMode] = useState('Devnet')
+    const [balance,setBalance] = useState('')
+
+    const location = useLocation();
+    const { walletAddress } = location.state || {}; 
+
+    useEffect(() => {
+        getBalance(walletId,mode).then(balance => setBalance(balance)).catch(err => console.log(err))
+    },[])
 
     const sol = true
-    const walletId = 'dsfdhgfbskfmsd89yhdj3b'
-    const walletBal = 2
-
+    const walletId = walletAddress
+    
   return (
     <section className='main'>
         <div className="heading">
@@ -30,7 +39,7 @@ function AccountComp() {
                 <h3>Account Details</h3>
                 <div className="balance">
                     <p className="bal">Balance : 
-                        {walletBal} <span>{
+                        {balance} <span>{
                             sol ? ' sol': ' eth'
                             }</span>
                         </p>
