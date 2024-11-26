@@ -44,8 +44,7 @@ export const genEthWallet = (seed,walletId) => {
     
     const wallet = new Wallet(privateKey);
     const address = wallet.address;
-    // console.log({address}); // address generated from RAW public key. This can be shared
-    // setEthWallet({address,privateKey})
+    
 
     return {
         address,privateKey,walletId
