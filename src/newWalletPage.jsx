@@ -40,7 +40,7 @@ function newWalletPage() {
         const ethWallet = genEthWallet(seed,walletId)
         setETHWallet(prevValue => [
             ...prevValue,
-            ethWallet
+            ethWallet   
         ])
 
         storeWallets(ethWallet)
