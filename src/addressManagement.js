@@ -22,6 +22,9 @@ export const generateSeedFromMnemonic = () => {
 
 export const genEthWallet = (seed,walletId) => {
 
+    // Generate a uniwue UUID
+    const uniqueId = uuidv4()
+
     const ethDerivationPath = `m/44'/60'/0'/0/${walletId}`; //Derivation path for eth
 
     // Derive eth keypairs
@@ -47,12 +50,15 @@ export const genEthWallet = (seed,walletId) => {
     
 
     return {
-        address,privateKey,walletId
+        address,privateKey,walletId,uniqueId
     }
 };
 
  // Generate Solana wallet
  export const genSolanaWallet = (seed,walletId) => {
+
+    const uniqueId = uuidv4()
+
     
     // check if seed exists, if not gen one
     if(!seed) seed = generateSeedFromMnemonic()
@@ -69,7 +75,7 @@ export const genEthWallet = (seed,walletId) => {
         
    
     return {
-        address,privateKey,walletId
+        address,privateKey,walletId,uniqueId
     }
 };
 

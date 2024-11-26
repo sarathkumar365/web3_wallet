@@ -21,17 +21,19 @@ function WalletSectionComp(walletDetails) {
             <div className="wallet">
                 <div className="row--1 flex">
                     <div className="wallet--id">{walletDetails.data.walletId}</div>
-                    <div className="delete">
-                        {/* <img src={deleteIcon} alt="delete icon" /> */}
-                        <button className='bttn--primary flex delete--bttn'>Delete Wallet  
-                            <img src={deleteIcon} alt="delete bttn" />
-                        </button>
-                    </div>
-                    <div className="viewAccount">
-                        {/* <Link to={'account'}> */}
-                            <button onClick={goToAccount} className='bttn--primary flex delete--bttn'>View Account  
+                    <div className="right">
+                        <div className="viewAccount">
+                            {/* <Link to={'account'}> */}
+                                <button onClick={goToAccount} className='bttn--primary flex delete--bttn'>View Account  
+                                </button>
+                            {/* </Link> */}
+                        </div>
+                        <div className="delete">
+                            {/* <img src={deleteIcon} alt="delete icon" /> */}
+                            <button className='bttn--primary flex delete--bttn'>Delete Wallet  
+                                <img src={deleteIcon} alt="delete bttn" />
                             </button>
-                        {/* </Link> */}
+                        </div>
                     </div>
                 </div>
 
