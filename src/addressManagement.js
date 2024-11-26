@@ -1,8 +1,7 @@
 import {HDNodeWallet, Wallet}  from 'ethers'; 
 import { Keypair } from '@solana/web3.js';
 import { derivePath } from "ed25519-hd-key";
-import { Buffer } from 'buffer';
-import nacl from 'tweetnacl';
+import { v4 as uuidv4 } from 'uuid';import nacl from 'tweetnacl';
 import { mnemonicToSeedSync } from 'bip39';
 
 

@@ -21,7 +21,6 @@ function lamportsToSOL(lamports) {
 
 
 const fetchBalance = async (walletId,mode) => {
-
     const config = {
         method: 'post',
         url: mode == 'Devnet' ? rpcDevnet : rpcMainnet,

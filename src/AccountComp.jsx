@@ -8,6 +8,8 @@ function AccountComp() {
 
     const [mode,setMode] = useState('Devnet')
     const [balance,setBalance] = useState('')
+    console.log(balance);
+    
 
     const location = useLocation();
     const { walletAddress } = location.state || {}; 
@@ -20,7 +22,7 @@ function AccountComp() {
     const walletId = walletAddress
     
   return (
-    <section className='main'>
+    <section className='account--main'>
         <div className="heading">
             <div className="heading--left">
                 <h1>Wallet ID</h1>
