@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link,useNavigate } from 'react-router-dom';
 
-import deleteIcon from './icons/delete.png'
+import deleteIcon from '../icons/delete.png'
 
 
 function WalletSectionComp(walletDetails) {

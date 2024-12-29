@@ -1,10 +1,14 @@
 import { React, useEffect, useState } from 'react';
 import { useLocation,useNavigate } from 'react-router-dom';
-import { retriveExistingWallets,storeWallets,genEthWallet,genSolanaWallet } from './addressManagement';
+import { retriveExistingWallets,storeWallets,genEthWallet,genSolanaWallet } from '../factory functions/addressManagement';
 
-import WalletSectionComp from './WalletSectionComp';
+import WalletSectionComp from '../components/WalletSectionComp';
 
+<<<<<<< HEAD:src/newWalletPage.jsx
 import './css/newWalletPage.css'
+=======
+import '../css/newWalletPage.css'
+>>>>>>> development:src/pages/newWalletPage.jsx
 
 function newWalletPage() {
 

@@ -1,15 +1,15 @@
 @font-face {
     font-family: stara--bold;
-    src: url(./fonts/Stara-Bold-BF65962709c55b4.otf);
+    src: url(../fonts/Stara-Bold-BF65962709c55b4.otf);
 
     font-family: stara--medium;
-    src: url(./fonts/Stara-MediumItalic-BF65962709b6231.otf);
+    src: url(../fonts/Stara-MediumItalic-BF65962709b6231.otf);
 
     font-family: stara--medium-italic;
-    src: url(./fonts/Stara-MediumItalic-BF65962709b6231.otf);
+    src: url(../fonts/Stara-MediumItalic-BF65962709b6231.otf);
 
     font-family: poppins--medium;
-    src: url(./fonts/Poppins-Medium.ttf);
+    src: url(../fonts/Poppins-Medium.ttf);
   }
 
 

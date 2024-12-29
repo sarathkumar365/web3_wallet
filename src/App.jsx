@@ -1,9 +1,16 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link , useNavigate} from 'react-router-dom';
+<<<<<<< HEAD
 import { retriveExistingWallets } from './addressManagement';
 import MnemonicGenerator from './MnemonicGenerator';
 import AccountPage from './AccountComp';  
 import WalletPage from './newWalletPage';
+=======
+import { retriveExistingWallets } from './factory functions/addressManagement';
+import MnemonicGenerator from './components/MnemonicGenerator';
+import AccountPage from './components/AccountComp';  
+import WalletPage from './pages/newWalletPage';
+>>>>>>> development
 import './css/App.css';
 
 
