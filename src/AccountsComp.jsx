@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './accounts.css';
+import './css/accounts.css';
 import ethIcon from './icons/ethereum.png';
 import solIcon from './icons/solana.png';
 

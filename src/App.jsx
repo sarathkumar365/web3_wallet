@@ -4,7 +4,7 @@ import { retriveExistingWallets } from './addressManagement';
 import MnemonicGenerator from './MnemonicGenerator';
 import AccountPage from './AccountComp';  
 import WalletPage from './newWalletPage';
-import './App.css';
+import './css/App.css';
 
 
 function App() {

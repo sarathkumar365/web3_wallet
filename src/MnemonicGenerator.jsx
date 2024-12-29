@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import { generateMnemonic, mnemonicToSeedSync } from 'bip39';
 import {generateSeedFromMnemonic} from './addressManagement'
-import './App.css'
+import './css/App.css'
 // import * as bip39 from "bip39";
 
  

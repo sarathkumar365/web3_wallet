@@ -4,7 +4,7 @@ import { retriveExistingWallets,storeWallets,genEthWallet,genSolanaWallet } from
 
 import WalletSectionComp from './WalletSectionComp';
 
-import './newWalletPage.css'
+import './css/newWalletPage.css'
 
 function newWalletPage() {
 
