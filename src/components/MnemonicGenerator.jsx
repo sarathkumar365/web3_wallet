@@ -1,13 +1,8 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import { generateMnemonic, mnemonicToSeedSync } from 'bip39';
-<<<<<<< HEAD:src/MnemonicGenerator.jsx
-import {generateSeedFromMnemonic} from './addressManagement'
-import './css/App.css'
-=======
 import {generateSeedFromMnemonic} from '../factory functions/addressManagement'
 import '../css/App.css'
->>>>>>> development:src/components/MnemonicGenerator.jsx
 // import * as bip39 from "bip39";
 
  
