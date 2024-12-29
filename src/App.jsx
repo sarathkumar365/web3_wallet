@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link , useNavigate} from 'react-router-dom';
-import { retriveExistingWallets } from './addressManagement';
-import MnemonicGenerator from './v2/src/components/MnemonicGenerator';
-import AccountPage from './v2/src/components/AccountComp';  
-import WalletPage from './v2/src/pages/newWalletPage';
-import './App.css';
+import { retriveExistingWallets } from './factory functions/addressManagement';
+import MnemonicGenerator from './components/MnemonicGenerator';
+import AccountPage from './components/AccountComp';  
+import WalletPage from './pages/newWalletPage';
+import './css/App.css';
 
 
 function App() {
