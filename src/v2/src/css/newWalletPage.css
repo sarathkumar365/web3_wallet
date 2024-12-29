@@ -1,0 +1,189 @@
+@font-face {
+    font-family: stara--bold;
+    src: url(./fonts/Stara-Bold-BF65962709c55b4.otf);
+
+    font-family: stara--medium;
+    src: url(./fonts/Stara-MediumItalic-BF65962709b6231.otf);
+
+    font-family: stara--medium-italic;
+    src: url(./fonts/Stara-MediumItalic-BF65962709b6231.otf);
+
+    font-family: poppins--medium;
+    src: url(./fonts/Poppins-Medium.ttf);
+  }
+
+
+  .flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.navbar {
+    padding: 1em 5.3em;
+    justify-content: space-between;
+}
+.logo {
+    font-family: stara--bold;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+}
+
+.bttn--primary {
+    background-color: #1a1a1a;
+    border: 1px solid #444; 
+    padding: 0.6em .9em;
+
+    border-radius: 8px; 
+    color: #e0e0e0; 
+    cursor: pointer;
+    font-size: .9rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+}
+
+.bttn--primary:hover {
+  background-color: #444;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+  border-color: #646cff;
+
+}
+
+.bttn--primary:active {
+  background-color: #555; 
+}
+
+.wallets--section{
+    width: 100%;
+
+    margin-bottom: 1em;
+}
+
+.wallet {
+    width: 70%;
+    border-radius: 8px;
+    padding: 1em 3.2em;
+
+    background-color: #1a1a1a;
+
+    
+
+}
+
+.row--1 {
+    justify-content: space-around;
+    align-items: center;
+    background-color: #55555527; 
+    padding: .8em 1.9em;
+    border-radius: 8px;
+
+    font-family: poppins--medium;
+    font-weight: 600;
+}
+
+.right {
+
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 1em;
+}
+
+.delete--bttn {
+    padding: .3em .5em;
+    border-radius: 5px;
+    font-size: .8rem;
+    /* background-color: #55555527;  */
+    background-color: transparent;
+    gap: .5em;
+
+    letter-spacing: .4px;
+    font-family: stara--medium;
+}
+
+.delete:hover {
+    cursor: pointer;
+}
+
+.delete img {
+    width: 20px;
+    height: 20px;
+}
+
+.row--2 {
+    padding: .7em 1.2em;
+}
+
+.key {
+    font-family:poppins--medium;
+}
+
+.row--3 {
+    padding: 1em 1.3em;
+    gap: 2em;
+}
+
+.create--wallet {
+    width: 100%;
+    padding: 5em 1em;
+}
+
+.actions {
+    width: 50%;
+    padding: 1em 2em;
+    flex-direction: column;
+}
+
+.action--bttns{
+    margin-top: 2em;
+    gap: 2em;
+}
+
+/* DROPDOWN STYLES */
+
+/* Dropdown Menu Styling */
+/* Dropdown Menu Styling */
+.add--wallet {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%; /* Places the dropdown below the button */
+    left: 0;
+    background-color: #1a1a1a;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 0.5em 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    z-index: 10;
+    /* Make visible on hover */
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease;
+
+    margin-top: .3555em;
+}
+
+.dropdown-item {
+    background: none;
+    border: none;
+    color: #e0e0e0;
+    padding: 0.6em 1em;
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #666; /* Change to a lighter color on hover */
+    color: #fff;
+}
